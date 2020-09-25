@@ -1,0 +1,7 @@
+{
+  "aws": {
+    "serviceId": "RENAME_ME",
+    "region": "eu-central-1",
+    "stage": "prod"
+  }
+}

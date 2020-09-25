@@ -1,0 +1,21 @@
+service: ${ self:provider.parameters.aws.serviceId }
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  parameters: ${ file(config/index.js) }
+  region: ${ opt:region, self:provider.parameters.aws.region }
+  stage: ${ opt:stage, self:provider.parameters.aws.stage }
+
+exclude:
+  - .vscode/**
+  - .idea/**
+
+plugins:
+  - serverless-offline
+  - serverless-plugin-warmup
+  - serverless-sequelize-migrations
+
+functions:
+  dummy:
+    handler: lib/features/dummy.handler
