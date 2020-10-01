@@ -1,7 +1,14 @@
 {
+  "appName": "RENAME_ME",
   "aws": {
-    "serviceId": "RENAME_ME",
+    "AvailabilityZone": "eu-central-1a",
+    "IamInstanceProfile": "CodeDeployRole",
+    "ImageId": "ami-06416e60e830174bb",
+    "InstanceType": "t3a.nano",
+    "KeyName": "RENAME_ME",
+    "SecurityGroupId": "RENAME_ME",
     "region": "eu-central-1",
+    "serviceId": "ec2ivips",
     "stage": "prod"
   }
 }

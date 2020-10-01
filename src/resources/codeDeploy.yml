@@ -1,0 +1,23 @@
+Resources:
+  CodedeployDeploymentGroupDG1:
+    Type: AWS::CodeDeploy::DeploymentGroup
+    Properties:
+      ApplicationName: !Ref CodedeployApp
+      DeploymentConfigName: CodeDeployDefault.AllAtOnce
+      DeploymentGroupName: DG1
+      Ec2TagFilters:
+        - Key: Name
+          Value: ${ self:provider.parameters.appName }
+          Type: "KEY_AND_VALUE"
+      ServiceRoleArn:
+        !Join
+          - ':'
+          - - 'arn:aws:iam:'
+            - !Ref AWS::AccountId
+            - 'role/CodeDeployRole'
+
+  CodedeployApp:
+    Type: AWS::CodeDeploy::Application
+    Properties:
+      ApplicationName: ${ self:provider.parameters.appName }
+      ComputePlatform: Server

@@ -1,0 +1,9 @@
+Resources:
+  EIP:
+    Type: AWS::EC2::EIP
+    Properties:
+      Domain: standard
+      InstanceId: !Ref Instance
+      Tags:
+        - Key: Name
+          Value: ${ self:provider.parameters.appName }
