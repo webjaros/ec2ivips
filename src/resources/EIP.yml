@@ -6,4 +6,4 @@ Resources:
       InstanceId: !Ref Instance
       Tags:
         - Key: Name
-          Value: ${ self:provider.parameters.appName }
+          Value: ${env:APP_NAME}

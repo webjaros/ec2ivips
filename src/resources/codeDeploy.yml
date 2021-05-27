@@ -7,7 +7,7 @@ Resources:
       DeploymentGroupName: DG1
       Ec2TagFilters:
         - Key: Name
-          Value: ${ self:provider.parameters.appName }
+          Value: ${env:APP_NAME}
           Type: "KEY_AND_VALUE"
       ServiceRoleArn:
         !Join
@@ -19,5 +19,5 @@ Resources:
   CodedeployApp:
     Type: AWS::CodeDeploy::Application
     Properties:
-      ApplicationName: ${ self:provider.parameters.appName }
+      ApplicationName: ${env:APP_NAME}
       ComputePlatform: Server

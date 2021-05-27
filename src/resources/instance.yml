@@ -2,19 +2,19 @@ Resources:
   Instance:
     Type: AWS::EC2::Instance
     Properties:
-      AvailabilityZone: ${ self:provider.parameters.aws.AvailabilityZone }
+      AvailabilityZone: ${env:AWS_AVAILABILITY_ZONE}
       CreditSpecification:
         CPUCredits: standard
       DisableApiTermination: false
       EbsOptimized: false
-      IamInstanceProfile: ${ self:provider.parameters.aws.IamInstanceProfile }
-      ImageId: ${ self:provider.parameters.aws.ImageId }
+      IamInstanceProfile: ${env:AWS_IAM_INSTANCE_PROFILE}
+      ImageId: ${env:AWS_IMAGE_ID}
       InstanceInitiatedShutdownBehavior: stop
-      InstanceType: ${ self:provider.parameters.aws.InstanceType }
-      KeyName: ${ self:provider.parameters.aws.KeyName }
+      InstanceType: ${env:AWS_INSTANCE_TYPE}
+      KeyName: ${env:AWS_KEY_PAIR}
       Monitoring: false
       SecurityGroupIds:
-        - ${ self:provider.parameters.aws.SecurityGroupId }
+        - ${env:AWS_SECURITY_GROUP}
       Tags:
         - Key: Name
-          Value: ${ self:provider.parameters.appName }
+          Value: ${env:APP_NAME}

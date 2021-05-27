@@ -1,13 +1,15 @@
-service: ${ self:provider.parameters.aws.serviceId }
+service: ${env:SERVICE_ID}
+
+useDotenv: true
+configValidationMode: error
 
 provider:
   name: aws
-  runtime: nodejs12.x
-  parameters: ${ file(config/index.js) }
-  region: ${ opt:region, self:provider.parameters.aws.region }
-  stage: ${ opt:stage, self:provider.parameters.aws.stage }
+  runtime: nodejs14.x
+  region: ${env:AWS_REGION}
+  stage: prod
 
 resources:
-  - ${ file(src/resources/EIP.yml) }
-  - ${ file(src/resources/instance.yml) }
-  - ${ file(src/resources/codeDeploy.yml) }
+  - ${file(src/resources/EIP.yml)}
+  - ${file(src/resources/instance.yml)}
+  - ${file(src/resources/codeDeploy.yml)}
